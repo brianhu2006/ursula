@@ -3,3 +3,4 @@ testenv_instance_names:
   - "{{ testenv_instance_prefix }}-controller-0"
   - "{{ testenv_instance_prefix }}-controller-1"
   - "{{ testenv_instance_prefix }}-compute-0"
+testenv_heat_template_file: "{{ ansible_env.testenv_heat_template_file }}"
