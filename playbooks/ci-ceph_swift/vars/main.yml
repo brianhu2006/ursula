@@ -6,3 +6,5 @@ testenv_instance_names:
   - "{{ testenv_instance_prefix }}-ceph-0"
   - "{{ testenv_instance_prefix }}-ceph-1"
   - "{{ testenv_instance_prefix }}-ceph-2"
+testenv_heat_template_file: "{{ ansible_env.testenv_heat_template_file }}"
+  
