@@ -16,7 +16,7 @@
   package:
     name: "{{ item }}"
     state: present
-  with_items: "{{ client.names }}"
+  with_items: "{{ client.yum_packages }}"
   register: result
   until: result|succeeded
   retries: 5
