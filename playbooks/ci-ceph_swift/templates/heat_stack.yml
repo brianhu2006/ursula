@@ -71,71 +71,8 @@ parameters:
     default: {{ ansible_env.testenv_instance_prefix }}-swift-2
 
 resources:
-
   server_security_group:
-    type: OS::Neutron::SecurityGroup
-    properties:
-      description: Security group for servers of Ursula Tests
-      name: { get_param: security_group }
-      rules:
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: tcp
-          port_range_min: 22
-          port_range_max: 22
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: tcp
-          port_range_min: 80
-          port_range_max: 80
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: tcp
-          port_range_min: 443
-          port_range_max: 443
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: tcp
-          port_range_min: 35357
-          port_range_max: 35357
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: tcp
-          port_range_min: 5000
-          port_range_max: 5000
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: tcp
-          port_range_min: 6080
-          port_range_max: 6080
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: tcp
-          port_range_min: 8774
-          port_range_max: 8774
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: tcp
-          port_range_min: 8776
-          port_range_max: 8776
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: tcp
-          port_range_min: 8777
-          port_range_max: 8777
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: tcp
-          port_range_min: 9393
-          port_range_max: 9393
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: tcp
-          port_range_min: 9292
-          port_range_max: 9292
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: tcp
-          port_range_min: 9696
-          port_range_max: 9696
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: tcp
-          port_range_min: 8090
-          port_range_max: 8090
-        - remote_ip_prefix: 0.0.0.0/0
-          protocol: icmp
-        - ethertype: 'IPv4'
-          remote_mode: 'remote_group_id'
-        - ethertype: 'IPv6'
-          remote_mode: 'remote_group_id'
+    {% include 'security_group.yml' %}
 
   ssh_keypair:
     type: OS::Nova::KeyPair
