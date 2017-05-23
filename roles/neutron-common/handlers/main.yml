@@ -11,3 +11,13 @@
     - "{{ neutron.services.neutron_linuxbridge_agent }}"
     - "{{ neutron.services.neutron_metadata_agent }}"
     - "{{ neutron.services.neutron_lbaasv2_agent }}"
+
+- name: reload vxlan module
+  command: "{{ item }}"
+  with_items:
+    - rmmod mlx4_en
+    - rmmod vxlan
+    - modprobe vxlan
+    - modprobe mlx4_en
+  failed_when: false
+
